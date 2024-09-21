@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-matches-table
+      author: prixhd
+      changes:
+        - createTable:
+            tableName: matches
+            columns:
+              - column:
+                  name: match_title
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: match_link
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
