@@ -19,4 +19,10 @@ public class ChefBotConfiguration {
     @Value("${bot.url}")
     String url;
 
+    @Value("${spring.redis.host}")
+    String redisHost;
+
+    @Value("${spring.redis.port}")
+    int redisPort;
+
 }

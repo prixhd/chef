@@ -139,7 +139,7 @@ public class ChefBot extends TelegramLongPollingBot {
         }
 
         // Инициализация listOfMatches после инициализации matchService
-        initializeMatches();
+
     }
 
     private void initializeMatches() {
@@ -171,6 +171,7 @@ public class ChefBot extends TelegramLongPollingBot {
                     startCommandReceived(chatId);
                     break;
                 case "/matches":
+                    initializeMatches();
                     matchesCommandReceived(chatId);
                     break;
                 case "/help":
@@ -186,6 +187,7 @@ public class ChefBot extends TelegramLongPollingBot {
             long chatId = update.getCallbackQuery().getMessage().getChatId();
 
             if (callbackData.equals("SEARCH_MATCHES")) {
+                initializeMatches();
 
                 searchMatchesCommandLine(chatId, messageId);
             } else {
@@ -225,6 +227,7 @@ public class ChefBot extends TelegramLongPollingBot {
             var chat = message.getChat();
 
             User user = new User();
+            System.out.println(message);
 
             user.setChatId(chatId);
             user.setFirstName(chat.getFirstName());
@@ -238,6 +241,7 @@ public class ChefBot extends TelegramLongPollingBot {
     }
 
     private void searchMatchesCommandLine(long chatId, long messageId) {
+
         EditMessageText message = new EditMessageText();
 
         message.setText(ChefBot.TEXT_FOR_SEARCH_MATCHES);
